@@ -14,8 +14,23 @@ exports.up = async function(knex) {
       .unique();
     tbl.string('password', 128).notNullable();
   });
+
+  await knex.schema.createTable('strains', tbl => {
+    tbl.increments();
+    tbl.string('strain_name').nonNullable();
+    tbl.string('strain_image');
+    tbl.string('strain_description');
+    tbl.string('strain_aroma');
+    tbl.string('strain_qualities');
+  });
+
+  await knex.schema.createTable('saved_strains', tbl => {
+    tbl.increments();
+  });
 };
 
 exports.down = async function(knex) {
   await knex.schema.dropTableIfExists('users');
+  await knex.schema.dropTableIfExists('strains');
+  await knex.schema.dropTableIfExists('saved_strains');
 };
