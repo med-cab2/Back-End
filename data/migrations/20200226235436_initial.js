@@ -19,9 +19,9 @@ exports.up = async function(knex) {
   await knex.schema.createTable('strains', tbl => {
     tbl.increments();
     tbl.string('name').notNullable();
-    tbl.longtext('description');
-    tbl.longtext('aroma');
-    tbl.longtext('qualities');
+    tbl.text('description');
+    tbl.text('aroma');
+    tbl.text('qualities');
   });
 
   await knex.schema.createTable('users_strains', tbl => {
