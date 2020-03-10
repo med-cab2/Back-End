@@ -25,6 +25,7 @@ exports.up = async function(knex) {
   });
 
   await knex.schema.createTable('users_strains', tbl => {
+    tbl.increments();
     tbl
       .integer('users_id')
       .notNullable()
@@ -44,7 +45,7 @@ exports.up = async function(knex) {
 };
 
 exports.down = async function(knex) {
-  await knex.schema.raw('DROP TABLE IF EXISTS "users" CASCADE');
-  await knex.schema.raw('DROP TABLE IF EXISTS "strains" CASCADE');
-  await knex.schema.raw('DROP TABLE IF EXISTS "users_strains" CASCADE');
+  await knex.schema.dropTableIfExists('users_strains');
+  await knex.schema.dropTableIfExists('strains');
+  await knex.schema.dropTableIfExists('users');
 };
