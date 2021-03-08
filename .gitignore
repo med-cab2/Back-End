@@ -105,6 +105,14 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+.vscode
 
 # Enviorment Variable
 .env
+
+# Mac Files
+.DS_Store
+
+# database
+
+\*db3
